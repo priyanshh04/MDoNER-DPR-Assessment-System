@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDoNER - AI-Powered DPR Quality Assessment System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <h1>MDoNER DPR Assessment System</h1>
+                        <p>Ministry of Development of North Eastern Region</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline btn--sm" id="helpBtn">Help & Guidelines</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                
+                <!-- Upload Section -->
+                <section class="upload-section" id="uploadSection">
+                    <div class="card">
+                        <div class="card__body upload-area">
+                            <div class="upload-content">
+                                <div class="upload-icon">📄</div>
+                                <h2>Upload DPR Document</h2>
+                                <p>Upload your Detailed Project Report for AI-powered quality assessment and risk analysis</p>
+                                <div class="upload-input-area">
+                                    <input type="file" id="fileInput" accept=".pdf,.txt,.doc,.docx" class="file-input" hidden>
+                                    <label for="fileInput" class="btn btn--primary btn--lg">
+                                        Choose File
+                                    </label>
+                                    <p class="upload-note">Supports PDF, Word documents, and text files (Max: 16MB)</p>
+                                </div>
+                                <div class="demo-actions">
+                                    <button class="btn btn--outline btn--sm" id="demoBtn">Try Demo Analysis</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Loading Section -->
+                <section class="loading-section hidden" id="loadingSection">
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="loading-content">
+                                <div class="loading-spinner"></div>
+                                <h3>Analyzing DPR Document</h3>
+                                <p>AI is processing your document for quality assessment and risk prediction...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressBar"></div>
+                                </div>
+                                <p class="progress-text" id="progressText">Initializing analysis...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Results Dashboard -->
+                <div class="dashboard hidden" id="resultsSection">
+                    <div class="metrics-section">
+                        <div class="metrics-grid">
+                            <div class="metric-card metric-card--primary">
+                                <div class="metric-header">
+                                    <h3>Overall Quality Score</h3>
+                                    <span class="metric-icon">📈</span>
+                                </div>
+                                <div class="metric-value" id="overallScore">78</div>
+                                <div class="metric-label">Good</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="overallScoreBar"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card metric-card--warning">
+                                <div class="metric-header">
+                                    <h3>Risk Level</h3>
+                                    <span class="metric-icon">⚠️</span>
+                                </div>
+                                <div class="metric-value" id="riskLevel">Medium</div>
+                                <div class="metric-label" id="riskDescription">Moderate attention needed</div>
+                            </div>
+
+                            <div class="metric-card metric-card--info">
+                                <div class="metric-header">
+                                    <h3>Completeness</h3>
+                                    <span class="metric-icon">✅</span>
+                                </div>
+                                <div class="metric-value" id="completenessScore">80%</div>
+                                <div class="metric-label">8/10 mandatory sections</div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="action-btn btn-success" onclick="exportReport()">📄 Export Summary Report</button>
+                            <button class="action-btn btn-primary" onclick="exportData()">💾 Export Analysis Data</button>
+                            <button class="action-btn btn-secondary" onclick="compareAnalysis()">📊 Compare with Benchmarks</button>
+                            <button class="action-btn btn-secondary" onclick="newAnalysis()">🔄 New Analysis</button>
+                        </div>
+                    </div>
+
+                    <div class="quality-metrics">
+                        <h3>Quality Metrics</h3>
+                        <div class="chart-container">
+                            <canvas id="qualityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Sections -->
+                <div class="analysis-sections hidden" id="analysisDetails">
+                    <div class="section-card">
+                        <h3>Section-wise Assessment</h3>
+                        <div id="sectionsList"></div>
+                    </div>
+
+                    <div class="section-card">
+                        <h3>Risk Assessment</h3>
+                        <div id="risksList"></div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="recommendations hidden" id="recommendationsSection">
+                    <h3>Improvement Recommendations</h3>
+                    <div id="recommendationsList"></div>
+                </div>
+
+                <!-- Detailed Analysis Results -->
+                <div class="detailed-analysis hidden" id="detailedSection">
+                    <h3>Detailed Analysis Results</h3>
+                    <div id="detailedSections"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal hidden" id="helpModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📋 MDoNER DPR Guidelines</h3>
+                <button class="modal-close" id="helpModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="guidelines-content">
+                    <h4>Mandatory DPR Sections:</h4>
+                    <ul>
+                        <li><strong>Context/Background (10%)</strong> - Sectoral policy and strategic importance</li>
+                        <li><strong>Problems Addressed (15%)</strong> - Baseline data and problem evidence</li>
+                        <li><strong>Project Objectives (15%)</strong> - Clear development objectives</li>
+                        <li><strong>Technology Issues (10%)</strong> - Technology choice and feasibility</li>
+                        <li><strong>Management Arrangements (10%)</strong> - Implementation structure</li>
+                        <li><strong>Means of Finance (15%)</strong> - Financial planning and budgets</li>
+                        <li><strong>Time Frame (10%)</strong> - Project timeline and milestones</li>
+                        <li><strong>Target Beneficiaries (5%)</strong> - Stakeholder identification</li>
+                        <li><strong>Legal Framework (5%)</strong> - Regulatory compliance</li>
+                        <li><strong>Risk Analysis (5%)</strong> - Risk identification and mitigation</li>
+                    </ul>
+                    
+                    <h4>Quality Criteria:</h4>
+                    <ul>
+                        <li><strong>Data Accuracy:</strong> Factual correctness and reliability</li>
+                        <li><strong>Completeness:</strong> Presence of all required sections</li>
+                        <li><strong>Technical Viability:</strong> Feasibility of proposed solutions</li>
+                        <li><strong>Compliance:</strong> Adherence to MDoNER regulations</li>
+                        <li><strong>Budget Realism:</strong> Market-based cost estimates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay hidden" id="overlay"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
