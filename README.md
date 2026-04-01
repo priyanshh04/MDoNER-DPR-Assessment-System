@@ -43,17 +43,6 @@ A comprehensive web-based platform designed for the **Ministry of Development of
 
 ## 🚀 Demo
 
-### Screenshots
-
-**Upload Interface**
-![Upload Interface](assets/upload-interface.png)
-
-**Analysis Dashboard**
-![Analysis Dashboard](assets/dashboard.png)
-
-**Detailed Results**
-![Detailed Results](assets/detailed-analysis.png)
-
 ### Live Demo
 Try the demo analysis to see the system in action without uploading any files.
 
