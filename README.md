@@ -88,4 +88,4 @@ Try the demo analysis to see the system in action without uploading any files.
 
 ### Quick Start
 
-1. **Clone the repository**
+**Clone the repository**
