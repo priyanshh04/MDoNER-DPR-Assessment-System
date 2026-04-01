@@ -43,6 +43,28 @@ A comprehensive web-based platform designed for the **Ministry of Development of
 
 ## 🚀 Demo
 
+### Folder Structure
+MDoNER_DPR_Assessment_System/
+├── app.js
+├── app.py
+├── database_manager.py
+├── dpr_analysis.db
+├── dpr_analyzer.py
+├── dpr_validator.py
+├── index.html
+├── pdf_processor.py
+├── report_generator.py
+├── requirements.txt
+├── risk_predictor.py
+├── style.css
+├── logs/
+├── reports/
+├── uploads/
+├── .vscode/
+│   └── launch.json
+├── .venv/
+└── __pycache__/
+
 ### Live Demo
 Try the demo analysis to see the system in action without uploading any files.
 
