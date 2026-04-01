@@ -9,41 +9,46 @@
 
 A comprehensive web-based platform designed for the **Ministry of Development of North Eastern Region (MDoNER)** to assess the quality of Detailed Project Reports (DPRs) using advanced **Natural Language Processing** and **Machine Learning** techniques.
 
+---
+
 ## 🌟 Features
 
 ### 🔍 AI-Powered Analysis
-- **Advanced NLP** for document text extraction and analysis
-- **Machine Learning** risk prediction models
-- **Automated quality assessment** across 10 mandatory DPR sections
-- **Intelligent scoring** based on MDoNER guidelines
+- Advanced NLP for document text extraction and analysis  
+- Machine Learning risk prediction models  
+- Automated quality assessment across 10 mandatory DPR sections  
+- Intelligent scoring based on MDoNER guidelines  
 
 ### 📊 Interactive Dashboard
-- **Real-time analysis** with progress tracking
-- **Professional dark theme** UI matching government portals
-- **Responsive design** for desktop and mobile devices
-- **Interactive charts** using Chart.js for data visualization
+- Real-time analysis with progress tracking  
+- Professional dark theme UI matching government portals  
+- Responsive design for desktop and mobile devices  
+- Interactive charts using Chart.js  
 
 ### 🎯 Comprehensive Assessment
-- **Section-wise Analysis**: Detailed evaluation of all 10 DPR sections
-- **Risk Assessment**: ML-based prediction of 5 major risk categories
-- **Quality Metrics**: Data accuracy, completeness, technical viability assessment
-- **Smart Recommendations**: Priority-based improvement suggestions
+- Section-wise analysis of all 10 DPR sections  
+- ML-based risk prediction (5 major categories)  
+- Quality metrics: accuracy, completeness, feasibility  
+- Smart recommendations with priority ranking  
 
 ### 📄 Document Processing
-- **Multi-format Support**: PDF, Word documents (.docx/.doc), and text files
-- **Intelligent Text Extraction**: Using PyPDF2, pdfplumber, and python-docx
-- **Large File Handling**: Support for documents up to 16MB
-- **Fallback Processing**: Graceful handling when libraries are unavailable
+- Supports PDF, Word (.doc/.docx), and text files  
+- Text extraction using PyPDF2, pdfplumber, python-docx  
+- Handles files up to 16MB  
+- Graceful fallback mechanisms  
 
 ### 📈 Reporting & Export
-- **PDF Report Generation**: Comprehensive analysis reports using ReportLab
-- **Data Export**: JSON format for further analysis
-- **Historical Tracking**: SQLite database for analysis history
-- **Comparison Features**: Benchmarking against similar projects
+- PDF reports using ReportLab  
+- JSON export support  
+- Historical tracking using SQLite  
+- Project comparison features  
+
+---
 
 ## 🚀 Demo
 
 ### Folder Structure
+```plaintext
 MDoNER_DPR_Assessment_System/
 ├── app.js
 ├── app.py
@@ -64,6 +69,7 @@ MDoNER_DPR_Assessment_System/
 │   └── launch.json
 ├── .venv/
 └── __pycache__/
+```
 
 ### Live Demo
 Try the demo analysis to see the system in action without uploading any files.
